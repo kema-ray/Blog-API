@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'blog',
     'blog_api',
     'rest_framework',
+    'users',
 ]
 
 MIDDLEWARE = [
@@ -125,8 +126,14 @@ STATIC_URL = 'static/'
 REST_FRAMEWORK = {
     'DEFAULT_PERMISSION_CLASSES': [
         'rest_framework.permissions.IsAuthenticatedOrReadOnly',
-    ]
+    ],
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'rest_framework_simplejwt.authentication.JWTAuthentication',
+    )
 }
+
+# Custom user model
+AUTH_USER_MODEL = "users.NewUser"
 
 # Permissions:
 # AllowAny
